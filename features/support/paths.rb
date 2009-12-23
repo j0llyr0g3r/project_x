@@ -14,7 +14,10 @@ module NavigationHelpers
       welcome_path()
     when /the sign up page/
       join_welcome_path()
-    
+    when /the edit user page/
+      edit_user_path(:current)
+    when /the sign out page/
+      user_path(:current)
     # Add more mappings here.
     # Here is a more fancy example:
     #

@@ -4,9 +4,39 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
   filter_parameter_logging :password
-  helper_method :current_user
+  helper_method :current_user, :root_url
+
+  prepend_before_filter :activate_authlogic, :login_required, :set_user_language
+
+  def root_url
+    '/'
+  end
+
+  def redirect_to_back
+    request.env["HTTP_REFERER"].blank? ? (redirect_to root_url) : (redirect_to :back)
+  end
+
+  # before-filters
+
+  protected
+
+  def login_required
+    redirect_to_back unless current_user
+  end
+
+  def set_user_language
+    if session[:language].blank?
+      I18n.locale = 'en'
+      session[:language] = 'en'
+    else
+      I18n.locale = session[:language]
+    end
+  end
+
+  def not_logged_in
+    redirect_to welcome_path if current_user
+  end
 
   private
 

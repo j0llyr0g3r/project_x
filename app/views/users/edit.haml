@@ -1,0 +1,7 @@
+#edit_profile_area
+  - semantic_form_for @user do |user|
+    - user.inputs do
+      = user.input :email
+      = user.input :first_name
+      = user.input :last_name
+    = user.submit

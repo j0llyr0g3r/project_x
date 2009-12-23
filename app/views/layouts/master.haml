@@ -1,10 +1,11 @@
+!!! XML
 !!!
-%html
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
+    = fav_icon_link()
     %title= page_title()
     = javascript_include_merged :base
     = stylesheet_link_merged :base
-    = fav_icon_link()
   %body
     #canvas
       #header

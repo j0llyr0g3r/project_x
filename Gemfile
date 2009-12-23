@@ -6,6 +6,7 @@ source "http://gems.github.com"
 
 gem "authlogic"
 gem "factory_girl"
+gem "formtastic"
 gem "haml"
 gem "nifty-generators"
 gem "passenger"

@@ -1,29 +1,28 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
-  
+
+  before_filter :login_required, :only => [:edit, :update]
+  before_filter :not_logged_in, :only => :create
+
   def create
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Successfully created user."
-      redirect_to root_url
+      redirect_to edit_user_path(:current)
     else
-      render :action => 'new'
+      $cust_log.debug('Saving failed:' + @user.errors.inspect)
+      redirect_to join_welcome_path
     end
   end
   
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
   
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully updated user."
-      redirect_to root_url
-    else
-      render :action => 'edit'
     end
+    render :action => 'edit'
   end
 end

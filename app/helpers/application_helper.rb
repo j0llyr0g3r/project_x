@@ -2,8 +2,7 @@
 module ApplicationHelper
 
   def fav_icon_link
-    # this line causes cucumber to print: .ignoring attempt to close head with link
-    content_tag(:link, '', :rel => "shortcut icon", :href => PATH_TO_FAV_ICON)
+    tag(:link, '', :type => "image/x-icon",:rel => "shortcut icon", :href => PATH_TO_FAV_ICON)
   end
 
   def page_title

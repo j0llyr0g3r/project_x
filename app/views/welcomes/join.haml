@@ -1,3 +1,15 @@
-- form_for @user do
+#sign_up_area
+  - semantic_form_for @user do |user|
+    - user.inputs do
+      = user.input :username
+      = user.input :email
+      = user.input :password
+      = user.input :password_confirmation
+    = user.submit
 
-- form_for @user_session do
+#login_area
+  - semantic_form_for @user_session do |user_session|
+    - user_session.inputs do
+      = user_session.input :username
+      = user_session.input :password
+    = user_session.submit

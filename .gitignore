@@ -8,4 +8,4 @@ config/development.sphinx.conf
 public/stylesheets/*.css
 public/javascripts/all.js
 public/stylesheets/all.css
-vendor/gems
+vendor/bundler_gems

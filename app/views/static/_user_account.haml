@@ -1,0 +1,6 @@
+- if current_user
+  = link_to "Edit Profile", edit_user_path(:current)
+  = link_to "Logout", logout_path
+- else
+  = link_to "Register", join_welcome_path
+  = link_to "Login", join_welcome_path

@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title= page_title()
+    = javascript_include_merged :base
+    = stylesheet_link_merged :base
+    = fav_icon_link()
+  %body
+    #canvas
+      #header
+        = render :partial => "static/header"
+      = yield
+      #footer
+        = render :partial => "static/footer"

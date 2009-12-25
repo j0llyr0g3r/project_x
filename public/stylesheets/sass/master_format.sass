@@ -1,6 +1,15 @@
 !std_round_factor = 7px
 !std_text_color = #454545
+!bg_color_light_grey = #C6C6C6
 
+=std_form_focus
+  input:focus
+    :background-color yellow
+
+=std_box
+  :background-color= !bg_color_light_grey
+  +rounded_small
+  :padding 10px
 =rounded_small
   :border-radius = !std_round_factor
   :-opera-border-radius = !std_round_factor
@@ -17,8 +26,12 @@ body
   #canvas
     :background-color white
     +rounded_small
-    #header
+    #header, #footer
       :background-color #AE0000
-
+      a:link, a:visited, a:hover
+        :text-decoration none
+        :color white
+    #content
+    #footer
 
 @import welcome_format

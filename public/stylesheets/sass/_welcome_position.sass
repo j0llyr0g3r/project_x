@@ -1,23 +1,40 @@
 body
   #canvas
-    #welcome
-      #create_ideas_area, #search_ideas_area, #search_random_area, #recommendations_area, #what_is_this_area
-        :position absolute
-        :width 300px
-        :height 150px
-      #create_ideas_area
-        :left 10px
-        :top 110px
-      #search_ideas_area
-        :right 10px
-        :top 110px
-      #what_is_this_area
-        :top 320px
-        :left 350px
-      #recommendations_area
-        :left 10px
-        :bottom 10px
-      #search_random_area
-        :right 10px
-        :bottom 10px
+    #content
+      #welcome
+        #show
+          #create_ideas_area, #search_ideas_area, #search_random_area, #recommendations_area, #what_is_this_area
+            :position absolute
+            :width 300px
+            :height 150px
+          #create_ideas_area
+            :left 10px
+            :top 110px
+          #search_ideas_area
+            :right 10px
+            :top 110px
+          #what_is_this_area
+            :top 290px
+            :left 350px
+          #recommendations_area
+            :left 10px
+            :bottom 110px
+          #search_random_area
+            :right 10px
+            :bottom 110px
+        #join
+          #sign_up_area, #login_area
+            :width 350px
+            :height 350px
+            :margin 20px
+            form
+              input[type=text], input[type=password]
+                :width 200px
+                :float right
+              li
+                :margin-top 30px
+          #sign_up_area
+            :float left
+          #login_area
+            :float right
 

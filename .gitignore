@@ -1,3 +1,4 @@
+mkmf.log
 bin/
 log/
 tmp/
@@ -8,4 +9,3 @@ config/development.sphinx.conf
 public/stylesheets/*.css
 public/javascripts/all.js
 public/stylesheets/all.css
-vendor/bundler_gems

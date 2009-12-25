@@ -1,7 +1,15 @@
 body
   #canvas
-    #welcome
-      #create_ideas_area, #search_ideas_area, #search_random_area, #recommendations_area, #what_is_this_area
-        :background-color grey
-        +rounded_small
-
+    #content
+      #welcome
+        #show
+          #create_ideas_area, #search_ideas_area, #search_random_area, #recommendations_area, #what_is_this_area
+            :background-color grey
+            +rounded_small
+        #join
+          #sign_up_area
+            +std_box
+            +std_form_focus
+          #login_area
+            +std_box
+            +std_form_focus

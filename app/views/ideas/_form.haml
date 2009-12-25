@@ -3,10 +3,10 @@
   %p
     = f.label :title
     %br
-    = f.text_field :title
+    = f.text_field :title, :class => 'required'
   %p
     = f.label :description
     %br
-    = f.text_field :description
+    = f.text_field :description, :class => 'required'
   %p
     = f.submit "Submit"

@@ -6,6 +6,7 @@ config/database.yml
 db/sphinx/
 nbproject/
 config/development.sphinx.conf
-public/stylesheets/*.css
+public/stylesheets/*_format.css
+public/stylesheets/*_position.css
 public/javascripts/all.js
 public/stylesheets/all.css

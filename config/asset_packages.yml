@@ -9,5 +9,3 @@ stylesheets:
   - reset
   - master_position
   - master_format
-  - welcome_position
-  - welcome_format

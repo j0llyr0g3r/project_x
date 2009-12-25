@@ -1,4 +1,7 @@
-#require 'action_controller/test_process'
+Factory.define :idea do |i|
+  i.title { Random.firstname + '_' + Random.lastname }
+  i.description  { Random.paragraphs }
+end
 
 Factory.define :user do |u|
   u.username { Random.firstname + '_' + Random.lastname }

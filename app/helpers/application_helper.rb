@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def link_dummy(text)
-    link_to(text, '#')
+    link_to(text, '#', :class => 'link_dummy')
   end
 
 end

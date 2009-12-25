@@ -1,12 +1,6 @@
-- form_for @idea, :html => {:class => 'validate'} do |f|
-  = f.error_messages
-  %p
-    = f.label :title
-    %br
-    = f.text_field :title, :class => 'required'
-  %p
-    = f.label :description
-    %br
-    = f.text_field :description, :class => 'required'
-  %p
-    = f.submit "Submit"
+- semantic_form_for @idea  do |idea|
+  = idea.error_messages
+  - idea.inputs do
+    = idea.input :title, :input_html => {:class => 'required'}
+    = idea.input :description, :input_html => {:class => 'required'}
+  = idea.submit

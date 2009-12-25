@@ -1,15 +1,15 @@
-- title "Idea"
-#show_idea_area
-  %p
-    %strong Title:
-    =h @idea.title
-  %p
-    %strong Description:
-    =h @idea.description
+#idea
+  #show
+    %p
+      %strong Title:
+      =h @idea.title
+    %p
+      %strong Description:
+      =h @idea.description
 
-  %p
-    = link_to "Edit", edit_idea_path(@idea)
-    |
-    = link_to "Destroy", @idea, :confirm => 'Are you sure?', :method => :delete
-    |
-    = link_to "View All", ideas_path
+    %p
+      = link_to "Edit", edit_idea_path(@idea)
+      |
+      = link_to "Destroy", @idea, :confirm => 'Are you sure?', :method => :delete
+      |
+      = link_to "View All", ideas_path

@@ -2,10 +2,6 @@
 !std_text_color = #454545
 !bg_color_light_grey = #C6C6C6
 
-=std_form_focus
-  input:focus
-    :background-color yellow
-
 =std_box
   :background-color= !bg_color_light_grey
   +rounded_small
@@ -17,8 +13,9 @@
   :-webkit-border-radius = !std_round_factor
   :-khtml-border-radius = !std_round_factor
 
+
 body
-  :font-size  62.5%
+  :font-size  12px
   :background-color #333333
   :font-family "Verdana", "Tahoma", "Helvetica", "Arial", sans-serif
   :letter-spacing 0.15px
@@ -35,3 +32,5 @@ body
     #footer
 
 @import welcome_format
+@import idea_format
+@import user_format

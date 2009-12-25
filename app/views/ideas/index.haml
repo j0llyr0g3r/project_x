@@ -1,15 +1,11 @@
-- title "Ideas"
-
-%table
-  %tr
-    %th Title
-    %th Description
-  - for idea in @ideas
-    %tr
-      %td= h idea.title
-      %td= h idea.description
-      %td= link_to 'Show', idea
-      %td= link_to 'Edit', edit_idea_path(idea)
-      %td= link_to 'Destroy', idea, :confirm => 'Are you sure?', :method => :delete
-
-%p= link_to "New Idea", new_idea_path
+#idea
+  #index
+    %table
+      %tr
+        %th Title
+        %th Description
+      - for idea in @ideas
+        %tr
+          %td= h idea.title
+          %td= h idea.description
+          %td= link_to 'Show', idea

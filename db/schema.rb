@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(:version => 20091224114543) do
   create_table "ideas", :force => true do |t|
     t.string   "title"
     t.string   "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

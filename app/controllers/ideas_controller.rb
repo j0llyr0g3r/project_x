@@ -15,11 +15,12 @@ class IdeasController < ApplicationController
   end
   
   def create
-    @idea = Idea.new(params[:idea])
+    @idea = current_user.build_idea(params[:idea])#Idea.new(params[:idea])
     if @idea.save
       flash[:notice] = "Successfully created idea."
       redirect_to @idea
     else
+      $cust_log.debug('Saving of idea failed: ' + @idea.error.inspect)
       render :action => 'new'
     end
   end

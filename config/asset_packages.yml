@@ -6,3 +6,7 @@ javascripts:
 stylesheets:
 - base:
   - reset
+  - master_position
+  - master_format
+  - welcome_position
+  - welcome_format

@@ -14,6 +14,7 @@ gem "rails"
 gem "random_data"
 gem "rspec"
 gem "rspec-rails"
+gem "shoulda"
 only [:test,:cucumber] do
   gem "cucumber"
   gem "webrat"

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :ideas
+
   map.resources :user_sessions
   map.resources :users
   #map.resources :welcomes, :only => :index, :collection => {:join => :get}

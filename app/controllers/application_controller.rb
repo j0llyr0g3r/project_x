@@ -1,5 +1,3 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
@@ -9,6 +7,16 @@ class ApplicationController < ActionController::Base
 
   prepend_before_filter :activate_authlogic, :login_required, :set_user_language
 
+  protected
+
+  def redirect_to_previous_page
+    # if we were redirected from a page which requires a logged in user,
+    # redirect back to that page on succesfull user-creation (== login)
+    redirect_to :controller => session[:redirect_controller], :action => session[:redirect_action]
+    session[:redirect_controller] = nil
+    session[:redirect_action] = nil
+  end
+
   def root_url
     '/'
   end
@@ -17,12 +25,12 @@ class ApplicationController < ActionController::Base
     request.env["HTTP_REFERER"].blank? ? (redirect_to root_url) : (redirect_to :back)
   end
 
-  # before-filters
-
-  protected
-
   def login_required
-    redirect_to_back unless current_user
+    if !current_user
+      session[:redirect_controller] = params[:controller]
+      session[:redirect_action] = params[:action]
+      redirect_to join_welcome_path
+    end
   end
 
   def set_user_language

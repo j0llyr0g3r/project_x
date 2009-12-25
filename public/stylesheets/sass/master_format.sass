@@ -1,0 +1,24 @@
+!std_round_factor = 7px
+!std_text_color = #454545
+
+=rounded_small
+  :border-radius = !std_round_factor
+  :-opera-border-radius = !std_round_factor
+  :-moz-border-radius = !std_round_factor
+  :-webkit-border-radius = !std_round_factor
+  :-khtml-border-radius = !std_round_factor
+
+body
+  :font-size  62.5%
+  :background-color #333333
+  :font-family "Verdana", "Tahoma", "Helvetica", "Arial", sans-serif
+  :letter-spacing 0.15px
+  :color = !std_text_color
+  #canvas
+    :background-color white
+    +rounded_small
+    #header
+      :background-color #AE0000
+
+
+@import welcome_format

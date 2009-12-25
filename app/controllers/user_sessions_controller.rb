@@ -10,7 +10,11 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      redirect_to edit_user_path(:current)
+      if session[:redirect_controller] and session[:redirect_action]
+        redirect_to_previous_page
+      else
+        redirect_to edit_user_path(:current)
+      end
     else
       $cust_log.debug("Creating user session failed: #{@user_session.errors}")
       redirect_to join_welcome_path

@@ -10,7 +10,7 @@ module NavigationHelpers
     
     when /the home\s?page/
       '/'
-    when /the welcome index page/
+    when /the welcome page/
       welcome_path()
     when /the sign up page/
       join_welcome_path()

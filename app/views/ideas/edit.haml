@@ -1,0 +1,9 @@
+- title "Edit Idea"
+
+#edit_idea_area
+  = render :partial => 'form'
+
+  %p
+    = link_to "Show", idea_path(@idea)
+    |
+    = link_to "View All", ideas_path

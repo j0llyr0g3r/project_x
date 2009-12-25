@@ -6,8 +6,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = "Successfully created user."
-      redirect_to edit_user_path(:current)
+      if session[:redirect_controller] and session[:redirect_action]
+        redirect_to_previous_page
+      else
+        redirect_to edit_user_path(:current)
+      end
     else
       $cust_log.debug('Saving failed:' + @user.errors.inspect)
       redirect_to join_welcome_path

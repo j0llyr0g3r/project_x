@@ -1,12 +1,11 @@
-Feature: Welcome page
-  In order to begin from the start
+Feature: Welcome
+  In order to motivate users to explore the webside
   As a surfer
-  I want to see the welcome page
-  Scenario: Start page
-    Given I am on the welcome index page
-    Then I should see the element "#static_user_account"
-    And I should see the element "#search_ideas_area"
-    And I should see the element "#create_ideas_area"
-    And I should see the element "#what_is_this_area"
-    And I should see the element "#search_random_area"
-    And I should see the element "#recommendations_area"
+  I want to see an attractive welcome page, which allows him to quickly explore the features of project x
+  Scenario: Coming from another website
+    Given I am on the welcome page
+    Then I should see "Create an idea"
+    And I should see "Search For Ideas"
+    And I should see "What is this?"
+    And I should see "Get recommendations"
+    And I should see "I'm feeling lucky"

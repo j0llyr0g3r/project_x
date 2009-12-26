@@ -1,15 +1,10 @@
-Feature: User Signup
-  In order to sign up
-  As a new user
-  I want to create a user profile
-  Scenario: Sign up page
+Feature: Sign up
+  In order to be able to fully use project_x
+  As a new, unregistered user
+  I want to create a user account
+  Scenario: Standard user create
     Given I am on the sign up page
-    Then I should see the element "#sign_up_area"
-    And I should see the element "#login_area"
-    When I fill in "user_username" with "test_user"
-    And I fill in "user_email" with "test@test.com"
-    And I fill in "user_password" with "password"
-    And I fill in "user_password_confirmation" with "password"
-    And I press "user_submit"
-    Then I should see the element "#edit_profile_area"
+    When I fill in correct sign up data
+    And I press "Create Account"
+    Then I should see the edit profile page
 

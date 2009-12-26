@@ -1,8 +1,9 @@
-Feature: User logout
-  In order to prevent identity theft
-  As a logged user
-  I want to logout
-  Scenario: Standard Logout Process
+Feature: Logout
+  In order to use project x on other computers
+  As a logged in user
+  I want to log out of my account
+  Scenario: Standard user logout
     Given I am logged in
-    When I follow "logout_link"
-    Then I should see the element "#search_ideas_area"
+    When I follow "Logout"
+    Then I should see "What is this?"
+

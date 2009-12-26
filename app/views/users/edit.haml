@@ -5,4 +5,5 @@
         = user.input :email
         = user.input :first_name
         = user.input :last_name
-      = user.submit
+      = user.buttons do
+        = user.commit_button :button_html => { :value => "Update Profile" }

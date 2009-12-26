@@ -8,12 +8,14 @@
           = user.input :email, :input_html => {:class => 'required'}
           = user.input :password, :input_html => {:class => 'required'}
           = user.input :password_confirmation, :input_html => {:class => 'required', :equalto => "#user_password"}
-        = user.submit
+        = user.buttons do
+          = user.commit_button :button_html => { :value => "Create Account" }
     #login_area
       %h2 Login
       - semantic_form_for @user_session, :html => {:class => 'validate'} do |user_session|
         - user_session.inputs do
           = user_session.input :username, :input_html => {:class => 'required'}
           = user_session.input :password, :input_html => {:class => 'required'}
-        = user_session.submit
+        - user_session.buttons do
+          = user_session.commit_button :button_html => { :value => "Login" }
 

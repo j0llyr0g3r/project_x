@@ -1,9 +1,11 @@
-Feature: User login
-  In order to manage my projects
-  As a registered user
-  I want to login
-  Scenario: Standard Login Process
-    Given I have created a user account
-    When I go to the sign up page
-    And I log in with valid credentials
-    Then I should see the element "#edit_profile_area"    
+Feature: Login
+  In order to manage my ideas and involvements in other ideas
+  As a not logged in user
+  I want to log into my account
+  Scenario: Standard user login
+    Given I am on the sign up page
+    And I have created an account
+    When I fill in the login form with valid credentials
+    And I press "Login"
+    Then I should see the edit profile page
+

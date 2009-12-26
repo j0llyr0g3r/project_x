@@ -16,7 +16,7 @@ class UserSessionsController < ApplicationController
         redirect_to edit_user_path(:current)
       end
     else
-      $cust_log.debug("Creating user session failed: #{@user_session.errors}")
+      $cust_log.debug("Creating user session failed: #{@user_session.errors.inspect}")
       redirect_to join_welcome_path
     end
   end

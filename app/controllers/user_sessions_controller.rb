@@ -1,11 +1,7 @@
 class UserSessionsController < ApplicationController
 
   before_filter :login_required, :only => :destroy
-  before_filter :not_logged_in, :only => [:new, :create]
-
-  def new
-    @user_session = UserSession.new
-  end
+  before_filter :not_logged_in, :only => :create
   
   def create
     @user_session = UserSession.new(params[:user_session])
@@ -22,7 +18,6 @@ class UserSessionsController < ApplicationController
   end
   
   def destroy
-    $cust_log.debug('boom')
     @user_session = UserSession.find
     @user_session.destroy
     reset_session

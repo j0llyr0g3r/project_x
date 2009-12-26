@@ -21,11 +21,12 @@ describe UsersController do
       response.should redirect_to(edit_user_path(:current))
     end
 
-    xit "should redirect to referrer when user is logged in" do
-      # TODO how do i stub the current_user method so that it returns a user?
+    it "should redirect to 'create idea' when model is valid and session is set accordingly" do
+      User.any_instance.stubs(:valid?).returns(true)
       post :create
-      #response.should redirect_to(root_url)
+      response.should redirect_to(new_idea_path())
     end
+
   end
 
   describe "edit action" do
@@ -33,11 +34,6 @@ describe UsersController do
       login(@user)
       get :edit, :id => @user
       response.should render_template(:edit)
-    end
-
-    it "should redirect if user is not logged in" do
-      get :edit, :id => @user
-      response.should be_redirect
     end
   end
 
@@ -56,9 +52,5 @@ describe UsersController do
       response.should render_template(:edit)
     end
 
-    it "should redirect if user is not logged in" do
-      put :update, :id => @user
-      response.should be_redirect
-    end
   end
 end

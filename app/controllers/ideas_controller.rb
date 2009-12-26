@@ -19,8 +19,8 @@ class IdeasController < ApplicationController
   end
   
   def create
-    @idea = current_user.ideas.build(params[:idea])
-    if @idea.save
+    @idea = current_user.leaderships.create(params[:idea])
+    if @idea.valid?
       flash[:notice] = "Successfully created idea."
       redirect_to @idea
     else

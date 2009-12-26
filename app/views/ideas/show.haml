@@ -3,13 +3,9 @@
     %p
       %strong Title:
       =h @idea.title
+    %br
     %p
       %strong Description:
       =h @idea.description
 
-    %p
-      = link_to "Edit", edit_idea_path(@idea)
-      |
-      = link_to "Destroy", @idea, :confirm => 'Are you sure?', :method => :delete
-      |
       = link_to "View All", ideas_path

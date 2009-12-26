@@ -11,7 +11,17 @@
 =std_center_container
   :width 700px
   :margin 10px auto
-  :height 400px
+  :height 450px
+
+=std_table
+  thead
+    tr
+      :height 30px
+  tbody
+    tr
+      :height 60px
+      td
+        :padding 0 5px
 
 body
   #canvas
@@ -25,10 +35,14 @@ body
     :height 705px
     #header
       :height 80px
+      #static_user_account, #static_logo
+        :margin-top 30px
       #static_logo
         :float left
+        :margin-left 20px
       #static_user_account
         :float right
+        :margin-right 20px
     #content
       :height 545px
     #footer

@@ -3,10 +3,10 @@ class IdeasController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
 
   def index
-    if(params[:random])
-      @ideas = Idea.random
+    if(params[:user_id])
+      @ideas = current_user.leaderships
     else
-      @ideas = Idea.find(:all, :order => "created_at DESC")
+      @ideas = Idea.find(:all, :order => "created_at DESC", :limit => DISPLAY_LIMIT)
     end
   end
   

@@ -22,6 +22,8 @@ describe UsersController do
     end
 
     it "should redirect to 'create idea' when model is valid and session is set accordingly" do
+      session[:redirect_controller] = 'ideas'
+      session[:redirect_action] = 'new'
       User.any_instance.stubs(:valid?).returns(true)
       post :create
       response.should redirect_to(new_idea_path())

@@ -3,4 +3,5 @@
   - idea.inputs do
     = idea.input :title, :input_html => {:class => 'required'}
     = idea.input :description, :input_html => {:class => 'required'}
-  = idea.buttons
+  - idea.buttons do
+    = idea.commit_button

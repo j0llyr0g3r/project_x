@@ -2,10 +2,25 @@ require 'spec_helper'
 
 describe SearchesController do
 
-  describe "show action" do
+  describe "new action" do
     it "should be successful" do
-      get 'show'
+      get 'new'
       response.should be_success
     end
   end
+
+  describe "show action" do
+    it "should render show template if ideas are found" do
+      Idea.stub!(:fetch).and_return([Idea.new])
+      get 'show'
+      response.should render_template(:show)
+    end
+
+    it "should render new template if no ideas are found" do
+      Idea.stub!(:fetch).and_return([])
+      get 'show'
+      response.should render_template(:new)
+    end
+  end
+
 end

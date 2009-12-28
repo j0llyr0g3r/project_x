@@ -27,4 +27,21 @@ describe Idea do
     end
   end
 
+  describe "method" do
+    describe "random" do
+      before(:all) do
+        5.times do
+          Factory(:idea)
+        end
+      end
+      it "should never yield the same collection" do
+        Idea.random.should_not eql(Idea.random)
+      end
+    end
+
+    describe "fetch" do
+      it "should yield a collection if keywords are passed as arguments"
+    end
+  end
+
 end

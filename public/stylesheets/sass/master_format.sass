@@ -1,9 +1,16 @@
 !std_round_factor = 7px
 !std_text_color = #454545
 !bg_color_light_grey = #C6C6C6
+!bg_color_grey = #BCBCBC
 
-=std_box
+
+
+=grey_bg
+  :background-color= !bg_color_grey
+=light_grey_bg
   :background-color= !bg_color_light_grey
+=std_box
+  +light_grey_bg
   +rounded_small
   :padding 10px
 =rounded_small
@@ -34,3 +41,4 @@ body
 @import welcome_format
 @import idea_format
 @import user_format
+@import search_format

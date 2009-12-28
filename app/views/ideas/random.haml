@@ -1,0 +1,11 @@
+#idea
+  #index
+    %table
+      %tr
+        %th Title
+        %th Description
+      - for idea in @ideas
+        %tr
+          %td= h idea.title
+          %td= h idea.description
+          %td= link_to 'Show', idea

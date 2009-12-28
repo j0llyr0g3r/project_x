@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
 
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show, :random]
 
   def index
     if(params[:user_id])
@@ -49,4 +49,9 @@ class IdeasController < ApplicationController
     flash[:notice] = "Successfully destroyed idea."
     redirect_to ideas_url
   end
+
+  def random
+    @ideas = Idea.random
+  end
 end
+

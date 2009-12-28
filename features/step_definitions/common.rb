@@ -32,7 +32,3 @@ end
 When /^I have created ideas$/ do
   # do nothing since we created ideas for the standard user in a before-hook
 end
-
-Then /^I should see my updated profile$/ do
-  response.should contain("Kubrick")
-end

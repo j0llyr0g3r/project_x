@@ -1,0 +1,15 @@
+#search
+  #new
+    %h1 Search For Ideas
+    #search_form_area
+      - form_tag search_path, :method => :get do
+        - field_set_tag do
+          %ol
+            %li
+              = label_tag 'search_keywords', "What are you looking for?"
+              %br
+              (Working keywords:albanian, hard core, movie)
+              = text_field_tag('search[keywords]', '', :id => 'search_keywords')
+            %li
+              = submit_tag('Find!')
+

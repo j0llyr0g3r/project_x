@@ -10,8 +10,8 @@ describe IdeasController do
   end
 
   before(:each) do
-    login(@user)
     activate_authlogic
+    login(@user)
   end
 
   def index
@@ -64,7 +64,7 @@ describe IdeasController do
     end
   end
 
-  describe "edit action" do
+  describe "update action" do
     it "update action should render edit template when model is invalid" do
       Idea.any_instance.stubs(:valid?).returns(false)
       put :update, :id => Idea.first
@@ -78,7 +78,7 @@ describe IdeasController do
     end
   end
 
-  describe "edit action" do
+  describe "destroy action" do
     it "destroy action should destroy model and redirect to index action" do
       idea = Idea.first
       delete :destroy, :id => idea
@@ -86,4 +86,12 @@ describe IdeasController do
       Idea.exists?(idea.id).should be_false
     end
   end
+
+  describe "random action" do
+    it "should render random template" do
+      get :random
+      response.should render_template(:random)
+    end
+  end
+
 end

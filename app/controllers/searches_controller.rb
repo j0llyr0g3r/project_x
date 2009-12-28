@@ -2,11 +2,16 @@ class SearchesController < ApplicationController
 
   skip_before_filter :login_required
 
+  def new
+    render
+  end
+
   def show
-    if(params[:random])
-      @ideas = Idea.random
+    @ideas = Idea.fetch(params[:search])
+    if @ideas.blank?
+      render :new
     else
-      @ideas = Idea.find(:all, :order => "created_at DESC")
+      render
     end
   end
 end

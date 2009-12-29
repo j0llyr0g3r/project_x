@@ -4,7 +4,7 @@
       %h2 Sign up
       - semantic_form_for @user, :html => {:class => 'validate'} do |user|
         - user.inputs do
-          = user.input :username, :input_html => {:class => 'required'}
+          = user.input :login, :input_html => {:class => 'required'}
           = user.input :email, :input_html => {:class => 'required'}
           = user.input :password, :input_html => {:class => 'required'}
           = user.input :password_confirmation, :input_html => {:class => 'required', :equalto => "#user_password"}
@@ -14,7 +14,7 @@
       %h2 Login
       - semantic_form_for @user_session, :html => {:class => 'validate'} do |user_session|
         - user_session.inputs do
-          = user_session.input :username, :input_html => {:class => 'required'}
+          = user_session.input :login, :input_html => {:class => 'required'}
           = user_session.input :password, :input_html => {:class => 'required'}
         - user_session.buttons do
           = user_session.commit_button :button_html => { :value => "Login" }

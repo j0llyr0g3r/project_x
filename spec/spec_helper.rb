@@ -5,6 +5,15 @@ require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environ
 require 'spec/autorun'
 require 'spec/rails'
 require "authlogic/test_case"
+require 'factory_girl'
+require 'spec/factories.rb'
+#require 'active_record/fixtures'
+require 'webrat_rspec_rails'
+require 'action_controller/test_process'
+
+def login_user(user)
+  UserSession.create(user)
+end
 
 # Uncomment the next line to use webrat's matchers
 #require 'webrat/integrations/rspec-rails'
@@ -20,10 +29,6 @@ Spec::Runner.configure do |config|
   config.use_transactional_fixtures = true
   config.use_instantiated_fixtures  = false
   config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
-
-  def login(user)
-    UserSession.create(user)
-  end
 
   # == Fixtures
   #

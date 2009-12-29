@@ -24,7 +24,6 @@ class IdeasController < ApplicationController
       flash[:notice] = "Successfully created idea."
       redirect_to @idea
     else
-      $cust_log.debug('Saving of idea failed: ' + @idea.error.inspect)
       render :action => 'new'
     end
   end

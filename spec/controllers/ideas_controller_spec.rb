@@ -11,15 +11,6 @@ describe IdeasController do
 
   before(:each) do
     activate_authlogic
-    login(@user)
-  end
-
-  def index
-    if(params[:user_id])
-      @ideas = current_user.leaderships
-    else
-      @ideas = Idea.find(:all, :order => "created_at DESC", :limit => DISPLAY_LIMIT)
-    end
   end
 
   describe "index action" do  
@@ -37,49 +28,100 @@ describe IdeasController do
   end
 
   describe "new action" do
-    it "should render new template" do
-      get :new
-      response.should render_template(:new)
+    describe "logged in" do
+      before(:each) do
+        login_user(@user)
+      end
+      it "should render new template" do
+        get :new
+        response.should render_template(:new)
+      end
+    end
+    
+    describe "not logged in" do
+      it "should redirect to the signup-page" do
+        get :new
+        response.should redirect_to(join_welcome_path)
+      end
     end
   end
 
   describe "create action" do
-    it "should render new template when model is invalid" do
-      Idea.any_instance.stubs(:valid?).returns(false)
-      post :create
-      response.should render_template(:new)
+    describe "logged in" do
+      before(:each) do
+        login_user(@user)
+      end
+
+      it "should render new template when model is invalid" do
+        Idea.any_instance.stubs(:valid?).returns(false)
+        post :create
+        response.should render_template(:new)
+      end
+
+      it "should redirect when model is valid" do
+        Idea.any_instance.stubs(:valid?).returns(true)
+        post :create
+        response.should redirect_to(idea_url(assigns[:idea]))
+      end
     end
 
-    it "should redirect when model is valid" do
-      Idea.any_instance.stubs(:valid?).returns(true)
-      post :create
-      response.should redirect_to(idea_url(assigns[:idea]))
+    describe "not logged in" do
+      it "should redirect to the signup-page" do
+        get :create
+        response.should redirect_to(join_welcome_path)
+      end
     end
   end
 
   describe "edit action" do
-    it "should render edit template" do
-      get :edit, :id => Idea.first
-      response.should render_template(:edit)
+    describe "logged in" do
+      before(:each) do
+        login_user(@user)
+      end
+
+      it "should render edit template" do
+        get :edit, :id => Idea.first
+        response.should render_template(:edit)
+      end
+    end
+
+    describe "not logged in" do
+      it "should redirect to the signup-page" do
+        get :edit, :id => Idea.first
+        response.should redirect_to(join_welcome_path)
+      end
     end
   end
 
   describe "update action" do
-    it "update action should render edit template when model is invalid" do
-      Idea.any_instance.stubs(:valid?).returns(false)
-      put :update, :id => Idea.first
-      response.should render_template(:edit)
+    describe "logged in" do
+      before(:each) do
+        login_user(@user)
+      end
+
+      it "update action should render edit template when model is invalid" do
+        Idea.any_instance.stubs(:valid?).returns(false)
+        put :update, :id => Idea.first
+        response.should render_template(:edit)
+      end
+
+      it "update action should redirect when model is valid" do
+        Idea.any_instance.stubs(:valid?).returns(true)
+        put :update, :id => Idea.first
+        response.should redirect_to(idea_url(assigns[:idea]))
+      end
     end
 
-    it "update action should redirect when model is valid" do
-      Idea.any_instance.stubs(:valid?).returns(true)
-      put :update, :id => Idea.first
-      response.should redirect_to(idea_url(assigns[:idea]))
+    describe "not logged in" do
+      it "should redirect to the signup-page" do
+        put :update, :id => Idea.first
+        response.should redirect_to(join_welcome_path)
+      end
     end
   end
 
   describe "destroy action" do
-    it "destroy action should destroy model and redirect to index action" do
+    xit "destroy action should destroy model and redirect to index action" do
       idea = Idea.first
       delete :destroy, :id => idea
       response.should redirect_to(ideas_url)

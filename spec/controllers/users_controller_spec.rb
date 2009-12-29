@@ -1,11 +1,15 @@
 require File.dirname(__FILE__) + '/../spec_helper'
  
 describe UsersController do
-  fixtures :all
-  integrate_views
+#  integrate_views
+#  include Authlogic::TestCase
 
   before(:all) do
-    @user = Factory.create(:user)
+    @user = Factory(:user)
+  end
+
+  before(:each) do
+    activate_authlogic
   end
 
   describe "create action" do
@@ -28,31 +32,52 @@ describe UsersController do
       post :create
       response.should redirect_to(new_idea_path())
     end
-
   end
 
   describe "edit action" do
-    it "should render edit template" do
-      login(@user)
-      get :edit, :id => @user
-      response.should render_template(:edit)
+    describe "logged in" do
+      before(:each) do
+        UserSession.create(@user)
+      end
+
+      it "should render edit template" do
+        get :edit, :id => @user
+        response.should render_template(:edit)
+      end
+    end
+
+    describe "not logged in" do
+      it "should render edit template" do
+        get :edit, :id => @user
+         response.should redirect_to(join_welcome_path)
+      end
     end
   end
 
   describe "update action" do
-    it "should render edit template when model is invalid" do
-      login(@user)
-      User.any_instance.stubs(:valid?).returns(false)
-      put :update, :id => @user
-      response.should render_template(:edit)
+    describe "logged in" do
+      before(:each) do
+        UserSession.create(@user)
+      end
+
+      it "should render edit template when model is invalid" do
+        User.any_instance.stubs(:valid?).returns(false)
+        put :update, :id => @user
+        response.should render_template(:edit)
+      end
+
+      it "should render edit template when model is valid" do
+        User.any_instance.stubs(:valid?).returns(true)
+        put :update, :id => @user
+        response.should render_template(:edit)
+      end
     end
 
-    it "should render edit template when model is valid" do
-      login(@user)
-      User.any_instance.stubs(:valid?).returns(false)
-      put :update, :id => @user
-      response.should render_template(:edit)
+    describe "not logged in" do
+      it "should render the signup-page" do
+        put :update, :id => @user
+        response.should redirect_to(join_welcome_path)
+      end
     end
-
   end
 end

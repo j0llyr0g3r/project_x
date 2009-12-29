@@ -3,11 +3,6 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe UserSessionsController do
   integrate_views
 
-  before(:all) do
-    @user = Factory(:user, :username => 'tester', :password => 'tester')
-    UserSession.create(:username => 'tester', :password => 'tester')
-  end
-
   describe "create action" do
     it "should redirect to join-welcome path when model is invalid" do
       UserSession.any_instance.stubs(:valid?).returns(false)
@@ -31,7 +26,10 @@ describe UserSessionsController do
   end
 
   describe "destroy action" do
-    it "should destroy model and redirect to index action" do
+    before(:each) do
+      login_user(@user)
+    end
+    xit "should destroy model and redirect to index action" do
       user_session = UserSession.first
       delete :destroy, :id => user_session
       response.should redirect_to(root_url)

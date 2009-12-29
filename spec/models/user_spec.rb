@@ -26,14 +26,14 @@ describe User do
   end
 
   describe "should not validate" do
-    it "without a username" do
-      Factory.build(:user, :username => nil).should_not be_valid
+    it "without a login" do
+      Factory.build(:user, :login => nil).should_not be_valid
     end
     it "without an email" do
       Factory.build(:user, :email => nil).should_not be_valid
     end
-    it "with duplicate username" do
-      Factory.build(:user, :username => @user.username).should_not be_valid
+    it "with duplicate login" do
+      Factory.build(:user, :login => @user.login).should_not be_valid
     end
     it "with duplicate email" do
       Factory.build(:user, :email => @user.email).should_not be_valid

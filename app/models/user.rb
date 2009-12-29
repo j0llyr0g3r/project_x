@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :password, :password_confirmation, :first_name, :last_name
+  attr_accessible :login, :email, :password, :password_confirmation, :first_name, :last_name
   acts_as_authentic
-  validates_presence_of :username, :email
-  validates_uniqueness_of :username, :email
+  validates_presence_of :login, :email
+  validates_uniqueness_of :login, :email
 
   has_many :leaderships, :through => :inspirations, :class_name => 'Idea', :source => :idea, :uniq => true
   has_many :inspirations

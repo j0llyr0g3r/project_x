@@ -1,5 +1,5 @@
-admin_user = Factory.create(:user, :username => 'admin', :password => 'admin')
-tester_user = Factory.create(:user, :username => 'tester', :password => 'tester')
+admin_user = Factory.create(:user, :login => 'admin', :password => 'admin')
+tester_user = Factory.create(:user, :login => 'tester', :password => 'tester')
 
 admin_user.leaderships << Factory.create(:idea, :title => 'flashmob in front of the albanian embassy')
 admin_user.leaderships << Factory.create(:idea, :title => 'thai-chi in central park')

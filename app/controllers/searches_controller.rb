@@ -11,7 +11,7 @@ class SearchesController < ApplicationController
     if @ideas.blank?
       render :new
     else
-      render
+      render :show
     end
   end
 end

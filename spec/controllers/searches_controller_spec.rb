@@ -11,13 +11,13 @@ describe SearchesController do
 
   describe "show action" do
     it "should render show template if ideas are found" do
-      Idea.stub!(:fetch).and_return([Idea.new])
+      Idea.stubs(:fetch).returns([Idea.new])
       get 'show'
       response.should render_template(:show)
     end
 
     it "should render new template if no ideas are found" do
-      Idea.stub!(:fetch).and_return([])
+      Idea.stubs(:fetch).returns([])
       get 'show'
       response.should render_template(:new)
     end

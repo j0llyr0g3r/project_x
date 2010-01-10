@@ -30,6 +30,16 @@ Spec::Runner.configure do |config|
   config.use_instantiated_fixtures  = false
   config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
 
+  def we_are_logged_in
+    @current_user = Factory.build(:user)
+    controller.stubs(:current_user).returns(@current_user)
+  end
+
+  def we_are_not_logged_in
+    controller.stubs(:current_user).returns(nil)
+  end
+
+
   # == Fixtures
   #
   # You can declare fixtures for each example_group like this:
@@ -54,7 +64,7 @@ Spec::Runner.configure do |config|
   # RSpec uses it's own mocking framework by default. If you prefer to
   # use mocha, flexmock or RR, uncomment the appropriate line:
   #
-  # config.mock_with :mocha
+  config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
   #

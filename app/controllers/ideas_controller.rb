@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
 
-  before_filter :login_required, :except => [:index, :show, :random]
+  before_filter :authenticate_user!, :except => [:index, :show, :random]
 
   def index
     if(params[:user_id])
@@ -19,10 +19,10 @@ class IdeasController < ApplicationController
   end
   
   def create
-    @idea = current_user.leaderships.create(params[:idea])
+    @idea = current_user.create_leadership(params[:idea])
     if @idea.valid?
       flash[:notice] = "Successfully created idea."
-      redirect_to @idea
+      redirect_to idea_path(@idea)
     else
       render :action => 'new'
     end
@@ -36,7 +36,7 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
     if @idea.update_attributes(params[:idea])
       flash[:notice] = "Successfully updated idea."
-      redirect_to @idea
+      redirect_to idea_path(@idea)
     else
       render :action => 'edit'
     end

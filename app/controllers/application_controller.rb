@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   helper_method :current_user, :root_url
 
-  prepend_before_filter :activate_authlogic, :login_required, :set_user_language
+  prepend_before_filter :set_user_language
 
   protected
 

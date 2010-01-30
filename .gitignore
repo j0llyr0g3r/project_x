@@ -8,5 +8,5 @@ nbproject/
 config/development.sphinx.conf
 public/stylesheets/*_format.css
 public/stylesheets/*_position.css
-public/javascripts/all.js
-public/stylesheets/all.css
+public/javascripts/base_packaged.js
+public/stylesheets/base_packaged.css

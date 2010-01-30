@@ -3,7 +3,7 @@ class WelcomesController < ApplicationController
   skip_before_filter :login_required
 
   def show
-    render
+    render :show#, :layout => false
   end
 
   def join

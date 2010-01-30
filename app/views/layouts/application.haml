@@ -1,2 +1,15 @@
-- inside_layout 'master' do
-  = yield
+!!! XML
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title= title()
+    = javascript_include_merged :base
+    = stylesheet_link_merged :base
+  %body
+    #canvas
+      #header
+        = render :partial => "static/header"
+      #content
+        = yield
+      #footer
+        = render :partial => "static/footer"

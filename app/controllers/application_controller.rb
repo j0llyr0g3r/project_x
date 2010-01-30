@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   helper_method :current_user, :root_url
 
-  prepend_before_filter :set_user_language
+  #prepend_before_filter :set_user_language, :activate_authlogic
 
   protected
 
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
     redirect_to welcome_path if current_user
   end
 
-  private
+#  private
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
